@@ -37,9 +37,9 @@ def get_min_number(array):
     positivi = []
     negativi = set()
     for x in array:
-        if 0 >= x >= MIN_VALUE:
+        if type(x) == int and 0 >= x >= MIN_VALUE:
             negativi.add(x)
-        elif 0 < x <= MAX_VALUE:
+        elif type(x) == int and 0 < x <= MAX_VALUE:
             positivi.append(x)
         else:
             raise InvalidValue(x, array.index(x))

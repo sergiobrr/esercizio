@@ -16,7 +16,7 @@ def test_func_returns_zero_if_opposite_integer_not_present():
     assert get_min_number(v) == 0, get_min_number(v)
 
 
-def test_func_raises_error_if_array_member_not_between_threesholds():
+def test_func_raises_error_if_list_member_not_between_threesholds():
     assert_raises(
         InvalidValue,
         get_min_number,
@@ -29,4 +29,22 @@ def test_func_raises_error_if_array_member_not_between_threesholds():
  3 is not an integer between 100000 and -100000''',
         get_min_number,
         [-1, 89, 1, MIN_VALUE - 1]
+    )
+
+
+def test_func_raises_error_if_list_member_is_not_an_int():
+    assert_raises_regexp(
+        InvalidValue,
+        f'''Value "NOT AN INTEGER" at position\
+ 3 is not an integer between 100000 and -100000''',
+        get_min_number,
+        [-1, 89, 1, 'NOT AN INTEGER']
+    )
+
+    assert_raises_regexp(
+        InvalidValue,
+        f'''Value "5.0" at position\
+ 3 is not an integer between 100000 and -100000''',
+        get_min_number,
+        [-1, 89, 1, 5.0]
     )
