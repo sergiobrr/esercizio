@@ -5,6 +5,28 @@ __author__ = "Sergio Brero"
 __version__ = "0.1.0"
 __license__ = "MIT"
 
+MIN_VALUE = -100000
+MAX_VALUE = 100000
+
+
+class InvalidValue(ValueError):
+    """Exception raised for errors in the array members.
+
+    Attributes:
+        value -- array member which caused the error
+        index -- member's index
+        message -- explanation of the error
+    """
+
+    def __init__(
+            self, value, index
+    ):
+        self.value = value
+        self.index = index
+        self.message = f'''Value "{value}" at position\
+ {index} is not an integer between 100000 and -100000'''
+        super().__init__(self.message)
+
 
 def get_min_number(array):
     """ Returns the min int which opposite is present into the list
@@ -15,10 +37,12 @@ def get_min_number(array):
     positivi = []
     negativi = set()
     for x in array:
-        if x < 0:
+        if 0 >= x >= MIN_VALUE:
             negativi.add(x)
-        else:
+        elif 0 < x <= MAX_VALUE:
             positivi.append(x)
+        else:
+            raise InvalidValue(x, array.index(x))
 
     positivi.sort(reverse=True)
 
