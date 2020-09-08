@@ -4,4 +4,12 @@ from main import get_min_number
 def test_func_returns_expected_integer():
     v = [-7, -1, 8, 7, 9, -9]
     assert get_min_number(v) == 7, get_min_number(v)
+    v = [2, 2, 4, -2, 4, -2]
+    assert get_min_number(v) == 2, get_min_number(v)
+    v = [8, 3, -3, 9, -8]
+    assert get_min_number(v) == 3, get_min_number(v)
 
+
+def test_func_returns_zero_if_opposite_integer_not_present():
+    v = [-1, -3, -4, 5, 7, 2]
+    assert get_min_number(v) == 0, get_min_number(v)

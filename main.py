@@ -12,5 +12,19 @@ def get_min_number(array):
     Params:
         array: list
     """
-    if 7 in array:
-        return 7
+    positivi = []
+    negativi = set()
+    for x in array:
+        if x < 0:
+            negativi.add(x)
+        else:
+            positivi.append(x)
+
+    positivi.sort(reverse=True)
+
+    while positivi:
+        num = positivi.pop()
+        if -num in negativi:
+            return num
+
+    return 0
