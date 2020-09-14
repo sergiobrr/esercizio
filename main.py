@@ -15,12 +15,16 @@ class InvalidValue(ValueError):
     Attributes:
         value -- array member which caused the error
         index -- member's index
-        message -- explanation of the error
     """
 
     def __init__(
             self, value, index
     ):
+        """
+        Args:
+            value: the invalid value
+            index: invalid value list position
+        """
         self.value = value
         self.index = index
         self.message = f'''Value "{value}" at position\
@@ -30,9 +34,13 @@ class InvalidValue(ValueError):
 
 def get_min_number(array):
     """ Returns the min int which opposite is present into the list
+        or zero if conditions aren't matched
 
-    Params:
+    Args:
         array: list
+
+    Returns:
+        num: int
     """
     positivi = []
     negativi = set()
